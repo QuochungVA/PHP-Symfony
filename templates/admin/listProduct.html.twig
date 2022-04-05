@@ -1,0 +1,61 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block body %}
+<style>
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}</style>
+
+<div class="container">
+
+    <div class="row">
+
+<div class="col-lg-8">
+
+    <div class="d-flex justify-content-center ">
+
+  <table class="table table-striped table-inverse table-responsive">
+  
+    <thead class="thead-inverse">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {# In du lieu ra man hinh tu array #}
+            {% for item in list_products %}
+            <tr>
+                <td scope="row"> {{item.id}} </td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td><img  class="avatar" src="{{item.image}}" alt=""></td>
+                <td>
+                <button type="button" class="btn btn-outline-success">Details</button>
+                <button type="button" class="btn btn-outline-dark">Edit</button>
+                <button type="button" class="btn btn-outline-danger">Delete</button>
+                </td>
+            </tr>
+           {% endfor %}
+        </tbody>
+
+</table>
+
+</div>
+    <div class="col-lg-4 mt-5">
+    {# Nut them san pham #}
+<a name="" id="" class="btn btn-outline-info" href="{{path('create_product')}}" role="button">Create new product</a>
+</div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
