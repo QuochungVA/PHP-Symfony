@@ -138,4 +138,32 @@ class AdminController extends AbstractController
         ]);
     }
 
+    #[Route('/admin/list/category', name: 'app_admin_list_categories', methods: ['GET'])]
+    public function getManyCategories(): Response
+    {
+        $getCategories = $this->categoryRepository->findAll();
+        return $this->render('admin/listCategories.html.twig', ['list_categories' => $getCategories]);
+    }
+
+    // #[Route('/admin/update/category/{id}', name: 'app_admin_update_category')]    
+    // public function updateCategoryAction($id, Request $request){
+    //     $category = $this -> categoryRepository -> find($id);
+    //     $form = $this -> createForm(CategoryType::class, $category);
+    //     $form->handleRequest($request);
+    //     if($form->isSubmitted() && $form->isValid()){
+    //         $category -> setName($form->get('name')->getData());
+    //         $this -> em -> flush();
+    //         return $this -> redirectToRoute('app_admin_list_categories');
+    //     }
+    //     return $this -> render('admin/updateCategory.html.twig',['form' => $form->createView(),'category'=>$category]);
+    // }
+
+    // #[Route('/admin/delete/category/{id}', name: 'app_admin_delete_category', methods:['GET','DELETE'])] 
+    // public function deleteCategoryAction($id):Response{
+    //     $cate = $this->categoryRepository -> find($id);
+    //     $this -> em -> remove($cate);
+    //     $this -> em -> flush();
+    //     return $this -> redirectToRoute('app_admin_list_categories');
+    // }
+
 }

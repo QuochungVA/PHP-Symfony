@@ -1,0 +1,13 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block body %}
+{{form_start(form)}}
+<div class="mb-3">
+  <label  class="form-label">Category Name</label>
+  {{form_widget(form.name)}}
+</div>
+
+ <button type="submit" name="admin_create_category" class="btn btn-danger m-5">Confirm to publish post</button>
+{{form_end(form)}}
+
+{% endblock %}
