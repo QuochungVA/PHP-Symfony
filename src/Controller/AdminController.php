@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Product;
+use App\Form\CategoryType;
 use App\Form\ProductType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
@@ -118,5 +120,22 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('app_admin_list_products');
     }
 
-    
+    #[Route('/admin/create/category', name: 'admin_create_category', methods:['GET','POST'])]
+    public function createCategoryAction(Request $request): Response
+    {
+        $category = new Category();
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $newCat = $form->getData();
+            $this -> em -> persist($newCat);
+            $this -> em -> flush();
+            return $this -> redirectToRoute('app_admin_list_categories');
+        }
+
+        return $this->render('admin/createCategory.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
 }
