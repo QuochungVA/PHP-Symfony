@@ -1,0 +1,52 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block body %}
+{{form_start(form)}}
+<div class="mb-3">
+  <label for="" class="form-label">Product Name</label>
+  {{form_widget(form.productName)}}
+  
+</div>
+
+<div class="mb-3">
+  <label for="" class="form-label">The Price</label>
+  {{form_widget(form.price)}}
+  
+</div>
+
+<div class="mb-3">
+  <img class="img-responsive" src="{{data.image}}" alt="">
+
+  <label for="" class="form-label">Image</label>
+  {{form_widget(form.image)}}
+</div>
+<div class="mb-3">
+ 
+  <label for="" class="form-label">Quantity</label>
+  {{form_widget(form.quantity)}}
+  
+</div>
+<div class="mb-3">
+  <label for="" class="form-label">Description</label>
+  {{form_widget(form.description)}}
+  
+</div>
+
+<div class="mb-3">
+  <label for="" class="form-label">Brand</label>
+  {{form_widget(form.brand)}}
+  
+</div>
+
+<div class="mb-3">
+  <label for="" class="form-label">Category</label>
+  {{form_widget(form.CategoryId)}}
+  
+</div>
+
+ <button type="submit" class="btn btn-danger">Confirm to publish product</button>
+{{form_end(form)}}
+
+
+
+{% endblock %}
