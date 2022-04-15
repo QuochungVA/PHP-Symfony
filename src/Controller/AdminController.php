@@ -145,7 +145,7 @@ class AdminController extends AbstractController
         return $this->render('admin/listCategories.html.twig', ['list_categories' => $getCategories]);
     }
 
-    #[Route('/admin/update/category/{id}', name: 'app_admin_update_category')]    
+    #[Route('/admin/update/category/{id}', name: 'app_admin_edit_category')]    
     public function updateCategoryAction($id, Request $request){
         $category = $this -> categoryRepository -> find($id);
         $form = $this -> createForm(CategoryType::class, $category);
@@ -166,4 +166,8 @@ class AdminController extends AbstractController
         return $this -> redirectToRoute('app_admin_list_categories');
     }
 
+    #[Route('/admin/list/category/{id}',name:'app_admin_details_category', methods:['GET'])]
+    public function getOneCategory($id):Response {
+        return $this -> render('admin/detailsCategory.html.twig',['detials_category'=>$this->categoryRepository->find($id)]);
+    }
 }
