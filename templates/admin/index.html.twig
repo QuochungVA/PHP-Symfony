@@ -14,6 +14,21 @@
        
     </head>
     <body>
+    <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="{{path('app_admin_list_products')}}">Products</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{path('app_admin_list_categories')}}">Category</a>
+  </li>
+</ul>
+    
+    <!-- (Optional) - Place this js code after initializing bootstrap.min.js or bootstrap.bundle.min.js -->
+    <script>
+        var triggerEl = document.querySelector('#navId a')
+        bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
+    </script>
+    
         {% block body %}
 
         {% endblock %}
